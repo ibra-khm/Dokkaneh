@@ -5,6 +5,7 @@ $searchErr = '';
 $searched_prod = '';
 $check = false;
 $count = '';
+$sort_prod= '';
 
 if(isset($_POST['save'])){
 
@@ -17,22 +18,21 @@ if(isset($_POST['save'])){
         $searched_prod = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $count = $stmt->rowCount();
 
-    } elseif(isset($_POST['sort'])){
-        if($_POST=['sort'] == 'ASC'){
-            $stmt = $conn->prepare("SELECT * FROM `products` ORDER BY `products`.`price` ASC;");
-            $stmt->execute();
-            $stmt->fetchAll(PDO:FETCH_ASSOC);
-            
-        } else if($_POST=['sort'] == "DESC"){
-
-            $stmt = $conn->prepare("SELECT * FROM products ORDER BY products.price DESC;");
-            $stmt->execute();
-            $stmt->fetchAll(PDO:FETCH_ASSOC);
-
-        }
-    }
-    
-    else{
+    } else{
         $searchErr = "Product Not Found";
     }                     
+}
+else if(isset($_REQUEST['sort'])){
+    if($_REQUEST['sort'] == 'asc'){
+        $stmt = $conn->prepare("SELECT * FROM `products` ORDER BY `products`.`price` ASC;");
+        $stmt->execute();
+        $sort_prod = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+    } else if($_REQUEST['sort'] == "desc"){
+
+        $stmt = $conn->prepare("SELECT * FROM products ORDER BY products.price DESC;");
+        $stmt->execute();
+        $sort_prod = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    }
 }

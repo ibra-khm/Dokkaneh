@@ -9,6 +9,12 @@ if(!isset($_SESSION)){
 $sql = "SELECT * FROM categories";
 $stmt = $conn->query($sql);
 $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+//fetch products
+                    
+$sql = "SELECT * FROM products";
+$stmt = $conn->query($sql);
+$products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -98,7 +104,6 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <?php
                             } else{
                             ?>
-                            
                                 <button class="btn" id="logout"><i class="fa fa-user"></i> Logout</button>
                             <?php
                                 }
@@ -166,9 +171,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     // $cat_name = $categories[$cat_id]['name'];
                                     $cat_name = $category['name'];
                                     $cat_id = $category['id'];
-                                    
                                 ?>
-                                
                                 <li data-filter=".<?php echo($cat_id) ?>"><a href="http://localhost/ecommerce/shop.php?id=<?php echo($cat_id) ?>"><?php echo ($cat_name)?></a></li>
                                 <?php
                                 }
@@ -205,7 +208,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <!-- Hero Section End -->
 
     <!-- Product Section Begin -->
-    <section class="product spad">
+    <section class="product spad" style="padding-top: 0px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-5">
@@ -221,228 +224,73 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     $cat_id = $category['id'];
                                 ?>
                                 <li data-filter=".<?php echo($cat_id) ?>"><a href="http://localhost/ecommerce/shop.php?id=<?php echo($cat_id) ?>"><?php echo ($cat_name)?></a></li>
-                    <?php 
-                    }
-                    ?>
+                                <?php 
+                                    }
+                                ?>
                             </ul>
                         </div>
-                        <!-- <div class="sidebar__item">
-                            <h4>Price</h4>
-                            <div class="price-range-wrap">
-                                <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                    data-min="10" data-max="540">
-                                    <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                                </div>
-                                <div class="range-slider">
-                                    <div class="price-input">
-                                        <input type="text" id="minamount">
-                                        <input type="text" id="maxamount">
+                        
+                    </div>
+                    <div class="sidebar__item">
+                            <div class="latest-product__text">
+                                <h4>Latest Products</h4>
+                                
+                                    <div class="latest-prdouct__slider__item">
+                              
+                                        <div class="latest-product__slider owl-carousel"></a>
+                                        
+                                        
                                     </div>
+                                    <!-- <div class="latest-prdouct__slider__item">
+                                        <a href="#" class="latest-product__item">
+                                            <div class="latest-product__item__pic">
+                                                <img src="img/latest-product/lp-1.jpg" alt="">
+                                            </div>
+                                            <div class="latest-product__item__text">
+                                                <h6>Crab Pool Security</h6>
+                                                <span>$30.00</span>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="latest-product__item">
+                                            <div class="latest-product__item__pic">
+                                                <img src="img/latest-product/lp-2.jpg" alt="">
+                                            </div>
+                                            <div class="latest-product__item__text">
+                                                <h6>Crab Pool Security</h6>
+                                                <span>$30.00</span>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="latest-product__item">
+                                            <div class="latest-product__item__pic">
+                                                <img src="img/latest-product/lp-3.jpg" alt="">
+                                            </div>
+                                            <div class="latest-product__item__text">
+                                                <h6>Crab Pool Security</h6>
+                                                <span>$30.00</span>
+                                            </div>
+                                        </a>
+                                    </div> -->
                                 </div>
                             </div>
-                        </div> -->
-
-                        <div class="sidebar__item">
-                            <!-- <div class="latest-product__text">
-                                <h4>Latest Products</h4>
-                                <div class="latest-product__slider owl-carousel">
-                                    <div class="latest-prdouct__slider__item">
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="img/latest-product/lp-1.jpg" alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>$30.00</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="img/latest-product/lp-2.jpg" alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>$30.00</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="img/latest-product/lp-3.jpg" alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>$30.00</span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="latest-prdouct__slider__item">
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="img/latest-product/lp-1.jpg" alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>$30.00</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="img/latest-product/lp-2.jpg" alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>$30.00</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="img/latest-product/lp-3.jpg" alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>$30.00</span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div> -->
                         </div>
-                    </div>
+                    
                 </div>
                 <div class="col-lg-9 col-md-7">
-                    <!-- <div class="product__discount">
-                        <div class="section-title product__discount__title">
-                            <h2>Sale Off</h2>
-                        </div>
-                        <div class="row">
-                            <div class="product__discount__slider owl-carousel">
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="img/product/discount/pd-1.jpg">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Dried Fruit</span>
-                                            <h5><a href="#">Raisin’n’nuts</a></h5>
-                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="img/product/discount/pd-2.jpg">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Vegetables</span>
-                                            <h5><a href="#">Vegetables’package</a></h5>
-                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="img/product/discount/pd-3.jpg">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Dried Fruit</span>
-                                            <h5><a href="#">Mixed Fruitss</a></h5>
-                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="img/product/discount/pd-4.jpg">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Dried Fruit</span>
-                                            <h5><a href="#">Raisin’n’nuts</a></h5>
-                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="img/product/discount/pd-5.jpg">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Dried Fruit</span>
-                                            <h5><a href="#">Raisin’n’nuts</a></h5>
-                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="img/product/discount/pd-6.jpg">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Dried Fruit</span>
-                                            <h5><a href="#">Raisin’n’nuts</a></h5>
-                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
                     <div class="filter__item">
                         <div class="row">
                             <div class="col-lg-4 col-md-5">
-                                <!-- <div class="filter__sort">
-                                    <span>Sort By</span>
-                                    <form action="search.php" method="post">
-                                        <select name='sort'>
-                                            <option value='ASC'>Low-to-High</option>
-                                            <option value='DESC'>High-to-Low</option>
-                                        </select>
-                                        <input type="submit" value='Filter'>
-                                    </form>
-
-                                </div> -->
+                            <div class="filter__sort btn-group">
+                                    <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Sort Price By
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="http://localhost/ecommerce/shop.php?sort=asc">Low-to-High</a></li>
+                                        <li><a class="dropdown-item" href="http://localhost/ecommerce/shop.php?sort=desc">High-to-Low</a></li>
+                                    </ul>
+                                    </div>
+                                    
+                                
+                        
                             </div>
                             <div class="col-lg-4 col-md-4">
                                 <div class="filter__found">
@@ -454,13 +302,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                     <?php
                     require("connection.php");
-                    
-                    //fetch products
-                    
-                    $sql = "SELECT * FROM products";
-                    $stmt = $conn->query($sql);
-                    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+            
                     ?>
 
                <!---- Products Grid ----->
@@ -468,14 +310,15 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <div class="row featured__filter">
                     <?php
                     if(isset($_GET['id'])){
+                        foreach ($products as $product)
                         $id = $_GET['id'];
                         $sql = "SELECT * FROM products WHERE category_id=$id";
                         $stmt = $conn->query($sql);
                         $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                        $check = false;
+                        // $check = false;
                         $count = $stmt->rowCount();
                     }
-                   if ($check){
+                     if ($check){
                         foreach ($searched_prod as $product){
                             $name = $product['name'];
                             $image = $product['image'];
@@ -485,10 +328,8 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             // $cat_name = $categories[$cat_id]['name'];
                            ?>
                             <div class='col-lg-4 col-md-6 col-sm-6 '>
-                            
                                 <div class=' featured__item'>          
                                     <div class='featured__item__pic set-bg' data-setbg='<?php echo $product['image']; ?>' >
-                                    
                                         <ul class='featured__item__pic__hover'>
                                             <li><a href="http://localhost/ecommerce/addtocart.php?id=<?php echo $product['id']; ?>" ><i class='fa fa-shopping-cart'></i></a></li>
                                         </ul>
@@ -498,13 +339,35 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                         <h5><?php echo $product['price']; ?> JD</h5>
                                     </div>
                                 </div>
-                                <input type="hidden"></input>
                             </div>
-                        
                      <?php   
                      }}
-                     
-                    else{
+                     else if(isset($_REQUEST['sort'])){
+                        foreach ($sort_prod as $product){
+                            $name = $product['name'];
+                            $image = $product['image'];
+                            $price = $product['price'];
+                            $id = $product['id'];
+                            $cat_id = $product['category_id'];        
+                            ?>
+                            <div class='col-lg-4 col-md-6 col-sm-6 '>
+                            <div class=' featured__item'>          
+                            <div class='featured__item__pic set-bg' data-setbg='<?php echo $product['image']; ?>' >
+                            
+                                <ul class='featured__item__pic__hover'>
+                                    <li><a href="http://localhost/ecommerce/addtocart.php?id=<?php echo $product['id']; ?>" ><i class='fa fa-shopping-cart'></i></a></li>
+                                </ul>
+                            </div>
+                            <div class='featured__item__text'>
+                                <h6><a href='shop_details.php?p_id=<?php echo $product['id']; ?>'><?php echo $product['name']; ?></a></h6>
+                                <h5><?php echo $product['price']; ?> JD</h5>
+                            </div>
+                        </div>
+                        <input type="hidden"></input>
+                    </div>
+                            
+                            <?php
+                    }} else{
                         foreach ($products as $product){
                         $name = $product['name'];
                         $image = $product['image'];
@@ -527,7 +390,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     <h5><?php echo $product['price']; ?> JD</h5>
                                 </div>
                             </div>
-                            <input type="hidden"></input>
+                            <input type="hidden" value="<?php echo($cat_id)?>"></input>
                         </div>
                     
                  <?php   }}
@@ -636,6 +499,9 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </footer>
     <!-- Footer Section End -->
     <script src="./signup/js/app.logout.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
     <!-- Js Plugins -->
     <script src="./ogani-master/js/jquery-3.3.1.min.js"></script>
     <script src="./ogani-master/js/bootstrap.min.js"></script>

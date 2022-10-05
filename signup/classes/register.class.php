@@ -62,6 +62,7 @@ class Register extends Dbh
 
         session_start();
         $_SESSION['email'] = $user[0]['email'];
+        $_SESSION['id'] = $user[0]['id'];
 
         $stmt = null;
     }

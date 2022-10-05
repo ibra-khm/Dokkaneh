@@ -29,24 +29,24 @@
     </nav>
 
   </header>
-  <body class="w-100" style="background-color:#eee;">
-<section class="vh-100">
-  <div class="container h-100">
+  <body class="w-100" style="background-color:#eee; background: url('https://images.pexels.com/photos/1274614/pexels-photo-1274614.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'); background-size: cover;">
+<section class="vh-100" style="z-index: -1;">
+  <div class="container h-100 w-50">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-lg-12 col-xl-11">
         <div class="card text-black" style="border-radius: 25px;">
-          <div class="card-body p-md-5">
+          <div class="card-body p-md-3">
             <div class="row justify-content-center">
               <!-- <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1"> -->
-              <div style="display: block; align-items: center; color: white" class="container mt-5 w-50 align-middle">
+              <div style="display: block; align-items: center; color: white" class="container mt-5 w-75 align-middle">
                   <!-- Pills navs -->
-                  <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+                  <ul class="nav nav-pills nav-justified mb-3 " id="ex1" role="tablist">
                     <li class="nav-item" role="presentation">
                       <a class="nav-link active" id="tab-login" data-mdb-toggle="pill" href="#pills-login" role="tab" aria-controls="pills-login" aria-selected="true">
                         Login
                       </a>
                     </li>
-                    <li class="nav-item" role="presentation">
+                    <li class="nav-item " role="presentation">
                       <a class="nav-link" id="tab-register" data-mdb-toggle="pill" href="#pills-register" role="tab" aria-controls="pills-register"aria-selected="false">
                         Register
                       </a>
@@ -55,6 +55,7 @@
                   <!-- Pills navs -->
 
                   <!-- Pills content -->
+                  <h3 style="color:#7FAD39; text-align:center;">Welcome To Dokkaneh</h3>
                   <div class="tab-content">
                     <div
                       class="tab-pane fade show active"
@@ -63,14 +64,15 @@
                       aria-labelledby="tab-login"
                     >
                     
+                    
                 <!--------------- Log in --------------->
                       <form id="loginForm" method="post">
                         <div class="text-center">
-                          <p>Sign in</p>
+                          <p style="color: gray">Log in</p>
                         </div>
 
                         <!-- Email input -->
-                        <div class="form-outline mb-4">
+                        <div class="form-outline mb-5">
                           <input type="email" name="email_login" id="emailLogin" class="form-control" />
                           <label class="form-label" for="email-login">
                             Email <small></small></label>
@@ -84,23 +86,21 @@
                         <small id="err"></small>
                           
                         <!-- Submit button -->
-                        <button type="submit" id="loginBtn" class="btn btn-block mb-4" style="background-color: #23ff16 !important; color: white;">
+                        <button type="submit" id="loginBtn" class="btn btn-block mb-4 mt-5" style="background-color: #7FAD39 !important; color: white;">
                           Login
                         </button>
+                        
                       </form>
+                   
                     </div>
-                    <div
-                      class="tab-pane fade"
-                      id="pills-register"
-                      role="tabpanel"
-                      aria-labelledby="tab-register"
-                    >
-
-
-
-
-
-
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
                     <!--------------- Register --------------->
                       <form id="registrationForm">
                         <div class="text-center mb-3">
@@ -167,10 +167,11 @@
                         </div>
 
                         <!-- Submit button -->
-                        <button type="submit" class="btn btn-block mb-3" style="background-color: #23ff16">
+                        <button type="submit" class="btn btn-block mb-3" style="background-color: #7FAD39; color: white;">
                           Sign Up
                         </button>
-                      </form>
+                      </form>  
+                      
                     </div>
                   <!-- </div> -->
                   <!-- Pills content -->
