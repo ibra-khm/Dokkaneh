@@ -22,6 +22,7 @@ if(isset($_POST['save'])){
             $stmt = $conn->prepare("SELECT * FROM `products` ORDER BY `products`.`price` ASC;");
             $stmt->execute();
             $stmt->fetchAll(PDO:FETCH_ASSOC);
+            
         } else if($_POST=['sort'] == "DESC"){
 
             $stmt = $conn->prepare("SELECT * FROM products ORDER BY products.price DESC;");

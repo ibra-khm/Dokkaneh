@@ -4,6 +4,11 @@ require('./shop/search.php');
 if(!isset($_SESSION)){
     session_start();
 }
+                    
+// Fetch categories
+$sql = "SELECT * FROM categories";
+$stmt = $conn->query($sql);
+$categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -155,17 +160,19 @@ if(!isset($_SESSION)){
                             <span>All departments</span>
                         </div>
                         <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
+                        <li data-filter=".<?php echo($cat_id) ?>"><a href="http://localhost/ecommerce/shop.php">Show All</a></li>
+                        <?php
+                                foreach($categories as $category){
+                                    // $cat_name = $categories[$cat_id]['name'];
+                                    $cat_name = $category['name'];
+                                    $cat_id = $category['id'];
+                                    
+                                ?>
+                                
+                                <li data-filter=".<?php echo($cat_id) ?>"><a href="http://localhost/ecommerce/shop.php?id=<?php echo($cat_id) ?>"><?php echo ($cat_name)?></a></li>
+                                <?php
+                                }
+                                ?>
                         </ul>
                     </div>
                 </div>
@@ -206,14 +213,7 @@ if(!isset($_SESSION)){
                         <div class="sidebar__item">
                             <h4>Categories</h4>
                             <ul>
-                                <?php                    
-                                // Fetch categories
-                                $sql = "SELECT * FROM categories";
-                                $stmt = $conn->query($sql);
-                                $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                                ?>
                                 <li data-filter=".<?php echo($cat_id) ?>"><a href="http://localhost/ecommerce/shop.php">Show All</a></li>
-
                                 <?php
                                 foreach($categories as $category){
                                     // $cat_name = $categories[$cat_id]['name'];
@@ -434,10 +434,13 @@ if(!isset($_SESSION)){
                             <div class="col-lg-4 col-md-5">
                                 <!-- <div class="filter__sort">
                                     <span>Sort By</span>
+                                    <form action="search.php" method="post">
                                         <select name='sort'>
                                             <option value='ASC'>Low-to-High</option>
                                             <option value='DESC'>High-to-Low</option>
                                         </select>
+                                        <input type="submit" value='Filter'>
+                                    </form>
 
                                 </div> -->
                             </div>
@@ -446,12 +449,7 @@ if(!isset($_SESSION)){
                                     <h6><span><?php echo($count) ?></span> Products found</h6>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-3">
-                                <div class="filter__option">
-                                    <span class="icon_grid-2x2"></span>
-                                    <span class="icon_ul"></span>
-                                </div>
-                            </div>
+                         
                         </div>
                     </div>
                     <?php
